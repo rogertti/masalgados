@@ -209,7 +209,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <em class="p-romaneio-note lead"><strong></strong></em>
+                                    <em class="p-romaneio-note"><strong></strong></em>
                                 </div>
                             </div>
                         </section>';
