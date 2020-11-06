@@ -79,7 +79,7 @@
                                         ?>
                                     </select>
                                     <?php } else { ?>
-                                    <input type="hidden" name="vendedor" id="vendedor" value="<?php echo $_SESSION['id']; ?>">
+                                    <input type="hidden" name="vendedor" id="vendedor" value="<?php echo $_SESSION['id'].'-'.$_SESSION['seller']; ?>">
                                     <input type="text" name="fake_vendedor" id="fake_vendedor" class="form-control" value="<?php echo $_SESSION['seller']; ?>" title="Vendedor" placeholder="Vendedor" readonly>
                                     <?php } ?>
                                 </div>
@@ -157,7 +157,7 @@
                 $(".form-view-romaneio").submit(function(e){
                     e.preventDefault();
 
-                    $.post('romaneioView.php', $(this).serialize(), function(data){
+                    $.post('romaneioView.php', $(this).serialize(), function(data) {
                         $(".btn-view-romaneio").html('<img src="img/rings.svg" class="loader-svg">').fadeTo(fade, 1);
 
                         switch (data) {
