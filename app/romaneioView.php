@@ -137,9 +137,50 @@
                     
                     <div class="row">
                         <div class="col-md-12">
-                            <a class="btn btn-primary btn-flat pull-right" href="romaneioPrint.php?'.$py_data_inicial.'='.$data_inicial.'&'.$py_data_final.'='.$data_final.'&'.$py_idvendedor.'='.$vendedor[0].'&'.$py_vendedor.'='.$vendedor[1].'">Imprimir</a>
+                            <span class="pull-right">
+                                <a class="btn btn-default btn-flat" data-toggle="modal" data-target="#modal-add-romaneio-note" href="#">Adicionar Nota</a>
+                                <a class="btn btn-primary btn-flat" href="romaneioPrint.php?'.$py_data_inicial.'='.$data_inicial.'&'.$py_data_final.'='.$data_final.'&'.$py_idvendedor.'='.$vendedor[0].'&'.$py_vendedor.'='.$vendedor[1].'">Imprimir</a>
+                            </span>
                         </div>
-                    </div>';
+                    </div>
+                    
+                    <div class="modal fade" id="modal-add-romaneio-note" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close closed" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">Adicione uma nota, uma observação, etc</h4>
+                                </div>
+                                <div class="modal-body overing">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="text text-danger" for="note"></label>
+                                                <div class="input-group col-md-12">
+                                                    <textarea name="note" id="note" class="form-control" rows="5" required></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default btn-flat pull-left closed" data-dismiss="modal">Fechar</button>
+                                    <button type="button" class="btn btn-primary btn-flat btn-add-romaneio-note">Salvar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <script>
+                        $(document).ready(function() {
+                            $(".btn-add-romaneio-note").click(function() {
+                                let inputNote = document.getElementById("note");
+                                localStorage.setItem("romaneioNote", inputNote.value);
+                                $.smkAlert({text: "Nota de romaneio adicionada com sucesso.", type: "success", time: 3});
+                                $("#modal-add-romaneio-note").modal("toggle");
+                            });
+                        });
+                    </script>';
 
                     //Registrando LOG
 

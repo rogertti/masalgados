@@ -154,7 +154,7 @@
 
                 //View romaneio
 
-                $(".form-view-romaneio").submit(function(e){
+                $(".form-view-romaneio").submit(function(e) {
                     e.preventDefault();
 
                     $.post('romaneioView.php', $(this).serialize(), function(data) {

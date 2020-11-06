@@ -207,7 +207,11 @@
                                     </table>
                                 </div>
                             </div>
-
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <em class="p-romaneio-note lead"><strong></strong></em>
+                                </div>
+                            </div>
                         </section>';
 
                         //Registrando LOG
@@ -245,6 +249,8 @@
         <script src="js/bootstrap.min.js"></script>
         <script>
             $(window).load(function () {
+                $('.p-romaneio-note strong').html('Observa&ccedil;&atilde;o:' + localStorage.getItem('romaneioNote'));
+                
                 window.onafterprint = function(e){
                     $(window).off('mousemove', window.onafterprint);
                     <?php if($_SESSION['key'] == 'A') { ?>
