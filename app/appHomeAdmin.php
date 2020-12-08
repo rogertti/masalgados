@@ -9,6 +9,7 @@
 
     $getmes = md5('mes');
     $getano = md5('ano');
+    $py_idvendedor = md5('idvendedor');
 
         if(isset($_GET[''.$getmes.''])) {
             $mes = $_GET[''.$getmes.''];
@@ -265,9 +266,10 @@
             <!-- /.content-wrapper -->
             
             <div class="box-btn-option">
-                <button type="button" class="btn btn-flat btn-primary btn-box-unselect-all hide"><i class="fa fa-check"></i> <span class="hidden-xs">Desmarcar todos</span></button>
-                <button type="button" class="btn btn-flat btn-primary btn-box-select-all hide"><i class="fa fa-check"></i> <span class="hidden-xs">Marcar todos</span></button>
-                <button type="button" class="btn btn-flat btn-success btn-box-print hide"><i class="fa fa-print"></i> <span class="hidden-xs">Imprimir selecionados</span></button>
+                <button type="button" class="btn btn-flat btn-default btn-box-unselect-all hide"><i class="fa fa-check"></i> <span class="hidden-xs">Desmarcar todos</span></button>
+                <button type="button" class="btn btn-flat btn-default btn-box-select-all hide"><i class="fa fa-check"></i> <span class="hidden-xs">Marcar todos</span></button>
+                <!-- <button type="button" class="btn btn-flat btn-success btn-box-romaneio hide"><i class="fa fa-file-text"></i> <span class="hidden-xs">Gerar romaneio</span></button> -->
+                <button type="button" class="btn btn-flat btn-info btn-box-print hide"><i class="fa fa-print"></i> <span class="hidden-xs">Imprimir selecionados</span></button>
                 <button type="button" class="btn btn-flat btn-danger btn-box-delete hide"><i class="fa fa-trash-o"></i> <span class="hidden-xs">Excluir selecionados</span></button>
             </div>
 
@@ -389,6 +391,12 @@
                     <div class="modal-content"></div>
                 </div>
             </div>
+
+            <div class="modal fade" id="modal-create-romaneio" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content"></div>
+                </div>
+            </div>
         </div>
         <!-- ./wrapper -->
 
@@ -481,6 +489,7 @@
                 $('.box-option').on('ifChecked', function(e) {
                     e.preventDefault();
                     $('.btn-box-select-all').removeClass('hide');
+                    $('.btn-box-romaneio').removeClass('hide');
                     $('.btn-box-print').removeClass('hide');
                     $('.btn-box-delete').removeClass('hide');
                 });
@@ -490,6 +499,7 @@
                     
                         if($('.box-option:checked').length == 0) {
                             $('.btn-box-select-all').addClass('hide');
+                            $('.btn-box-romaneio').addClass('hide');
                             $('.btn-box-print').addClass('hide');
                             $('.btn-box-delete').addClass('hide');
                         }
@@ -520,6 +530,20 @@
                     $('.box-option').iCheck('uncheck');
                     $('.btn-box-unselect-all').addClass('hide');
                     // $('.btn-box-select-all').removeClass('hide');
+                });
+
+                $('.btn-box-romaneio').click(function (e) {
+                    e.preventDefault();
+                    
+                    let boxes = [];
+
+                    $("input[name='box_option[]']:checked").each(function(i) {
+                        boxes.push($(this).val());
+                    });
+
+                    href = 'romaneioBox.php?<?php echo $py_idvendedor; ?>=<?php echo $_SESSION['id']; ?>&box_option=' + boxes;
+
+                    $('#modal-create-romaneio').modal('show').find('.modal-content').load(href);
                 });
 
                 $('.btn-box-print').click(function (e) {
