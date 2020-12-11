@@ -72,7 +72,7 @@
                         $total = $total + $lin->subtotal;
                     }
                 } else {
-                    echo'<p class="lead text-center">Nenhum romaneio gerado nesses parâmentros.</p>';
+                    echo'<p class="lead text-center">Nenhum romaneio gerado nesses parâmetros.</p>';
                 }
 
                 $sql->closeCursor();
