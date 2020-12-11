@@ -145,35 +145,36 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>';
 
+                        echo"
                         <script>
                             $(document).ready(function() {
-                                $(".btn-add-romaneio-note").click(function(e) {
+                                $('.btn-add-romaneio-note').click(function(e) {
                                     e.preventDefault();
 
-                                    let inputNote = document.getElementById("note");
+                                    let inputNote = document.getElementById('note');
                                     
-                                    localStorage.setItem("romaneioNote", inputNote.value);
+                                    localStorage.setItem('romaneioNote', inputNote.value);
                                     
-                                    $.smkAlert({text: "Nota de romaneio adicionada com sucesso.", type: "success", time: 3});
+                                    $.smkAlert({text: 'Nota de romaneio adicionada com sucesso.', type: 'success', time: 3});
                                     
-                                    $("#modal-add-romaneio-note").modal("hide");
+                                    $('#modal-add-romaneio-note').modal('hide');
                                 });
 
-                                $(".btn-print-romaneio").click(function(e) {
+                                $('.btn-print-romaneio').click(function(e) {
                                     e.preventDefault();
-                                    
-                                    location.href = "romaneioPrintBox.php?box_option=' . $_GET['box_option'] . '&' . $py_idvendedor . '=' . $_GET[''.$py_idvendedor.''] . '";
+                                    console.log(e);
+                                    location.href = 'romaneioPrintBox.php?box_option=" . $_GET['box_option'] . "&" . $py_idvendedor . "=" . $_GET[''.$py_idvendedor.''] . "';
                                 });
 
-                                $(".btn-close-note").click(function(e) {
+                                $('.btn-close-note').click(function(e) {
                                     e.preventDefault();
                                     
-                                    $("#modal-add-romaneio-note").modal("hide");
+                                    $('#modal-add-romaneio-note').modal('hide');
                                 });
                             });
-                        </script>';  
+                        </script>";
                     } else {
                         echo'<p class="lead text-center">Nenhum romaneio gerado nesses parâmetros.</p>';
                     }
